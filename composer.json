@@ -1,0 +1,44 @@
+{
+    "name": "gupalo/bpmworkflow-bundle",
+    "description": "Bpm Workflow Bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Gupalo\\BpmWorkflowBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gupalo\\BpmWorkflowBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "*",
+        "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/orm": "^2.11|^3.0",
+        "symfony/form": "^6.0",
+        "symfony/security-core": "^6.0",
+        "symfony/translation": "^6.0",
+        "symfony/yaml": "^6.0",
+        "twig/twig": "^3.3",
+        "gupalo/bpmworkflow": "^1.0"
+    },
+    "require-dev": {
+        "phpspec/prophecy-phpunit": "^2.0",
+        "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "platform": {
+            "php": "8.1"
+        },
+        "sort-packages": true
+    }
+}

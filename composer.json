@@ -1,5 +1,5 @@
 {
-    "name": "gupalo/bpmworkflow-bundle",
+    "name": "gupalo/bpmnworkflow-bundle",
     "description": "Bpm Workflow Bundle",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -25,7 +25,7 @@
         "symfony/translation": "^6.0",
         "symfony/yaml": "^6.0",
         "twig/twig": "^3.3",
-        "gupalo/bpmworkflow": "^1.0"
+        "gupalo/bpmnworkflow": "^1.0"
     },
     "require-dev": {
         "phpspec/prophecy-phpunit": "^2.0",

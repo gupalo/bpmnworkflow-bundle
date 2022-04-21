@@ -1,18 +1,18 @@
 {
     "name": "gupalo/bpmnworkflow-bundle",
-    "description": "Bpm Workflow Bundle",
+    "description": "Bpmn Workflow Bundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Gupalo\\BpmWorkflowBundle\\": "src/"
+            "Gupalo\\BpmnWorkflowBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Gupalo\\BpmWorkflowBundle\\Tests\\": "tests/"
+            "Gupalo\\BpmmWorkflowBundle\\Tests\\": "tests/"
         }
     },
     "require": {

@@ -7,12 +7,8 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
+            "Gupalo\\BpmmWorkflowBundle\\Tests\\": "tests/",
             "Gupalo\\BpmnWorkflowBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Gupalo\\BpmmWorkflowBundle\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -25,7 +21,8 @@
         "symfony/translation": "^6.0",
         "symfony/yaml": "^6.0",
         "twig/twig": "^3.3",
-        "gupalo/bpmnworkflow": "^1.0"
+        "gupalo/bpmnworkflow": "^1.0",
+        "symfony/expression-language": "^6.0"
     },
     "require-dev": {
         "phpspec/prophecy-phpunit": "^2.0",

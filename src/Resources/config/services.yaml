@@ -3,3 +3,12 @@ services:
     autowire: true
     autoconfigure: true
     public: true
+    
+  Gupalo\BpmnWorkflowBundle\Process\Workflow:
+    arguments:
+      - !tagged_iterator { tag: 'bpmnworkflow.extension' }
+  
+  Gupalo\BpmnWorkflowBundle\Extension\:
+    resource: '../../Extension/'
+    tags:
+      - { name: 'bpmnworkflow.extension' }

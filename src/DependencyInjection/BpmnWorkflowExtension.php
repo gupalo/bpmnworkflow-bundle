@@ -19,5 +19,11 @@ class BpmnWorkflowExtension extends Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+
+        $env = $container->getParameter('kernel.environment');
+        
+        if ($env === 'test') {
+            $loader->load('services_test.yaml');    
+        }
     }
 }

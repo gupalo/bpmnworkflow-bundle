@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0os9i7s" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="9.0.3">
+  <bpmn:process id="Process_0u7eebo" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1ca6d87">
+      <bpmn:outgoing>Flow_07ccqgw</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0z9g8k4" name="discount(20)">
+      <bpmn:incoming>Flow_07ccqgw</bpmn:incoming>
+      <bpmn:outgoing>Flow_05jwq3a</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_173wxnh">
+      <bpmn:incoming>Flow_05jwq3a</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_07ccqgw" sourceRef="StartEvent_1ca6d87" targetRef="Activity_0z9g8k4" />
+    <bpmn:sequenceFlow id="Flow_05jwq3a" sourceRef="Activity_0z9g8k4" targetRef="Event_173wxnh" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0u7eebo">
+      <bpmndi:BPMNEdge id="Flow_07ccqgw_di" bpmnElement="Flow_07ccqgw">
+        <di:waypoint x="192" y="120" />
+        <di:waypoint x="260" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05jwq3a_di" bpmnElement="Flow_05jwq3a">
+        <di:waypoint x="360" y="120" />
+        <di:waypoint x="452" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1ca6d87">
+        <dc:Bounds x="156" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z9g8k4_di" bpmnElement="Activity_0z9g8k4">
+        <dc:Bounds x="260" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_173wxnh_di" bpmnElement="Event_173wxnh">
+        <dc:Bounds x="452" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

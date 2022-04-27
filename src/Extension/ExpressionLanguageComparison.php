@@ -36,19 +36,21 @@ class ExpressionLanguageComparison implements ComparisonInterface
     {
         $identity = trim($identity);
         if (
-            !str_starts_with($condition, '!=') &&
-            !str_starts_with($condition, 'contains ') &&
-            !str_starts_with($condition, 'not contains ') &&
-            !str_starts_with($condition, 'in ') &&
-            !str_starts_with($condition, 'not in ') &&
-            !str_starts_with($condition, '>') &&
-            !str_starts_with($condition, '>=') &&
-            !str_starts_with($condition, '<') &&
-            !str_starts_with($condition, '<=') &&
-            !str_starts_with($condition, '==')
+            !str_starts_with($identity, '!=') &&
+            !str_starts_with($identity, 'contains ') &&
+            !str_starts_with($identity, 'not contains ') &&
+            !str_starts_with($identity, 'in ') &&
+            !str_starts_with($identity, 'not in ') &&
+            !str_starts_with($identity, '>') &&
+            !str_starts_with($identity, '>=') &&
+            !str_starts_with($identity, '<') &&
+            !str_starts_with($identity, '<=') &&
+            !str_starts_with($identity, '==')
         ) {
             return false;
         }
+        
+        return true;
     }
 
     private function prepareExpression($argument, string $condition): string

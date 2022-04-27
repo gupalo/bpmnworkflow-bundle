@@ -4,7 +4,7 @@ services:
     autoconfigure: true
     public: true
       
-  Gupalo\BpmnWorkflowBundle\Tests\Example\Extension\:
+  Gupalo\BpmmWorkflowBundle\Tests\Example\Extension\:
     resource: '../../../tests/Example/Extension/'
     tags:
       - { name: 'bpmnworkflow.extension' }

@@ -3,6 +3,7 @@
 namespace Gupalo\BpmnWorkflowBundle\DependencyInjection;
 
 use Exception;
+use Gupalo\BpmmWorkflowBundle\Tests\Example\Extension\PriceFunction;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;

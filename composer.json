@@ -22,7 +22,8 @@
         "symfony/yaml": "^6.0",
         "twig/twig": "^3.3",
         "gupalo/bpmnworkflow": "^1.0",
-        "symfony/expression-language": "^6.0"
+        "symfony/expression-language": "^6.0",
+        "symfony/orm-pack": "^2.2"
     },
     "require-dev": {
         "phpspec/prophecy-phpunit": "^2.0",

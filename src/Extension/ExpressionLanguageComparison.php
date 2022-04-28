@@ -23,34 +23,16 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ExpressionLanguageComparison implements ComparisonInterface
 {
-    public function execute($functionResult, string $condition): bool
+    public function execute(mixed $functionResult, string $condition): bool
     {
         $expression = $this->prepareExpression($functionResult, $condition);
 
-        $expressionLanguage = new ExpressionLanguage();
-
-        return $expressionLanguage->evaluate($expression, ['var' => $functionResult]);
+        return (new ExpressionLanguage())->evaluate($expression, ['var' => $functionResult]);
     }
 
     public function match(string $identity): bool
     {
-        $identity = trim($identity);
-        if (
-            !str_starts_with($identity, '!=') &&
-            !str_starts_with($identity, 'contains ') &&
-            !str_starts_with($identity, 'not contains ') &&
-            !str_starts_with($identity, 'in ') &&
-            !str_starts_with($identity, 'not in ') &&
-            !str_starts_with($identity, '>') &&
-            !str_starts_with($identity, '>=') &&
-            !str_starts_with($identity, '<') &&
-            !str_starts_with($identity, '<=') &&
-            !str_starts_with($identity, '==')
-        ) {
-            return false;
-        }
-        
-        return true;
+        return preg_match('#^(!=|<|<=|>|>=|==|contains |not contains |in |not in )#', trim($identity));
     }
 
     private function prepareExpression($argument, string $condition): string
@@ -59,18 +41,17 @@ class ExpressionLanguageComparison implements ComparisonInterface
 
         $expression = 'var ' . $condition;
 
-        if (str_starts_with($condition, 'contains ') || str_starts_with($condition, 'not contains ')) {
-            if (!is_array($argument)) {
-                throw new SyntaxError('function result must be array when condition contains');
+        if (!is_array($argument) && preg_match('#^(contains|not contains) #', $condition)) {
+            throw new SyntaxError('function result must be array when condition contains');
+        }
+
+        if (is_array($argument)) {
+            if (str_starts_with($condition, 'contains ')) {
+                $expression = sprintf('%s in var', trim(preg_replace('#^contains#', '', $condition)));
             }
-        }
-
-        if (is_array($argument) && str_starts_with($condition, 'contains ')) {
-            $expression = trim(str_replace('contains', '', $condition)) . ' in var';
-        }
-
-        if (is_array($argument) && str_starts_with($condition, 'not contains ')) {
-            $expression = trim(str_replace('not contains', '', $condition)) . ' not in var';
+            if (str_starts_with($condition, 'not contains ')) {
+                $expression = sprintf('%s not in var', trim(preg_replace('#^not contains#', '', $condition)));
+            }
         }
 
         return $expression;

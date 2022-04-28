@@ -1,10 +1,10 @@
 services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
-    public: true
-      
-  Gupalo\BpmmWorkflowBundle\Tests\Example\Extension\:
-    resource: '../../../tests/Example/Extension/'
-    tags:
-      - { name: 'bpmnworkflow.extension' }
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    Gupalo\BpmmWorkflowBundle\Tests\Example\Extension\:
+        resource: '../../../tests/Example/Extension/'
+        tags:
+            - { name: 'bpmnworkflow.extension' }

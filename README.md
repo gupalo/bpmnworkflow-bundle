@@ -1,20 +1,25 @@
-# README #
+BpmnWorkflow Bundle
+===================
 
 ## Install
 
-Add to bundle.php
 ```bash
+composer require gupalo/bpmnworkflow-bundle
+```
+
+Add to `config/bundles.php`
+```php
 Gupalo\BpmnWorkflowBundle\BpmnWorkflowBundle::class => ['all' => true]
 ```
-Add to doctrine.yaml
 
-```bash
+Add to `config/packages/doctrine.yaml`
+```yaml
 mappings:
-  BpmnWorkflowBundle:
-    type: attribute
+    BpmnWorkflowBundle:
+        type: attribute
 ```
 
-Execute
+## Execute
 
 ```bash
 php bin/console doctrine:migrations:diff
@@ -24,5 +29,5 @@ php bin/console doctrine:migrations:migrate
 Test
 
 ```bash
-php bin/phpunit vendor/gupalo/bpmnworkflow-bundle 
+php bin/phpunit vendor/gupalo/bpmnworkflow-bundle
 ```

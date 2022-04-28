@@ -2,8 +2,7 @@
 
 namespace Gupalo\BpmnWorkflowBundle\Entity;
 
-use App\Repository\BranchRepository;
-use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -33,57 +32,59 @@ class Process
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $updatedAt = null;
-    
+
     public function getId(): ?int
     {
         return $this->id;
     }
-    
+
     public function getXml(): string
     {
         return $this->xml;
     }
-    
+
     public function setXml(string $xml): void
     {
         $this->xml = $xml;
     }
-    
+
     public function getName(): string
     {
         return $this->name;
     }
-    
+
     public function setName(string $name): void
     {
         $this->name = $name;
     }
-    
+
     public function getSlug(): string
     {
         return $this->slug;
     }
-    
+
     public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
-    
+
     public function getCreatedAt(): DateTimeInterface
     {
+        $this->initializeCreatedAt();
+
         return $this->createdAt;
     }
-    
+
     public function setCreatedAt(DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
-    
+
     public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
-    
+
     public function setUpdatedAt(?DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
@@ -92,14 +93,14 @@ class Process
     #[ORM\PreUpdate]
     public function refreshUpdatedAt(): void
     {
-        $this->updatedAt = new DateTime();
+        $this->updatedAt = new DateTimeImmutable();
     }
 
     #[ORM\PrePersist]
     public function initializeCreatedAt(): void
     {
-        if ($this->createdAt === null) {
-            $this->createdAt = new DateTime();
+        if (!isset($this->createdAt)) {
+            $this->createdAt = new DateTimeImmutable();
         }
     }
 }

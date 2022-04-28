@@ -11,26 +11,19 @@ class DbProcessLoader implements BpmnLoaderInterface
     private array $slugs = [];
     private array $ids = [];
 
-    public function __construct(private ProcessRepository $processRepository)
+    public function __construct(private readonly ProcessRepository $processRepository)
     {
     }
 
     public function load(): array
     {
-        if ($this->slugs) {
-            $proceses = $this->processRepository->findBySlugs($this->slugs);
-        } elseif ($this->ids) {
-            $proceses = $this->processRepository->findByIds($this->ids);
-        } else {
-            $proceses = $this->processRepository->findAll();
-        }
+        $proceses = $this->findProcesses();
 
         $result = [];
-        /** @var Process $procese */
-        foreach ($proceses as $procese) {
-            $result[$procese->getSlug()] = $procese->getXml(); 
+        foreach ($proceses as $process) {
+            $result[$process->getSlug()] = $process->getXml();
         }
-        
+
         return $result;
     }
 
@@ -42,5 +35,19 @@ class DbProcessLoader implements BpmnLoaderInterface
     public function setIds(array $ids): void
     {
         $this->ids = $ids;
+    }
+
+    /** @return Process[] */
+    private function findProcesses(): array
+    {
+        if ($this->slugs) {
+            $proceses = $this->processRepository->findBySlugs($this->slugs);
+        } elseif ($this->ids) {
+            $proceses = $this->processRepository->findByIds($this->ids);
+        } else {
+            $proceses = $this->processRepository->findAll();
+        }
+
+        return $proceses;
     }
 }

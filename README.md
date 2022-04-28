@@ -20,3 +20,9 @@ Execute
 php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
 ```
+
+Test
+
+```bash
+php bin/phpunit vendor/gupalo/bpmnworkflow-bundle 
+```

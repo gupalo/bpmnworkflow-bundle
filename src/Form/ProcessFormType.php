@@ -22,7 +22,7 @@ class ProcessFormType extends AbstractType
                 'label' => 'Slug'
             ])
             ->add('xml', TextareaType::class, [
-                'label' => 'Comment'
+                'label' => 'XML'
             ])
             ->add('save', SubmitType::class)
         ;

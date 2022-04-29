@@ -2,17 +2,11 @@
 
 namespace Gupalo\BpmnWorkflowBundle\Repository;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityRepository;
 use Gupalo\BpmnWorkflowBundle\Entity\Process;
 
-class ProcessRepository extends ServiceEntityRepository
+class ProcessRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Process::class);
-    }
-    
     public function findByIds(array $ids): array
     {
         return $this->findBy(['id' => $ids]);
@@ -21,5 +15,22 @@ class ProcessRepository extends ServiceEntityRepository
     public function findBySlugs(array $slugs): array
     {
         return $this->findBy(['slug' => $slugs]);
+    }
+
+    public function create(Process $process): void
+    {
+        $this->getEntityManager()->persist($process);
+        $this->getEntityManager()->flush();
+    }
+
+    public function update(): void
+    {
+        $this->getEntityManager()->flush();
+    }
+
+    public function remove(Process $process): void
+    {
+        $this->getEntityManager()->remove($process);
+        $this->getEntityManager()->flush();
     }
 }

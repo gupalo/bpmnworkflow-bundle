@@ -7,6 +7,7 @@ use Gupalo\BpmnWorkflow\Bpmn\Loader\BpmnDirLoader;
 use Gupalo\BpmnWorkflow\Context\ContextInterface;
 use Gupalo\BpmnWorkflow\Context\DataContext;
 use Gupalo\BpmnWorkflowBundle\Process\Workflow;
+use Gupalo\BpmnWorkflowBundle\Repository\ProcessRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class WorkflowTest extends KernelTestCase

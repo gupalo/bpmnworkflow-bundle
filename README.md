@@ -19,6 +19,13 @@ mappings:
         type: attribute
 ```
 
+Add to config/routes/annotations.yaml
+
+```yaml
+bpmnWorkflow:
+    resource: '@BpmnWorkflowBundle/Resources/config/routes.yaml'
+```
+
 ## Execute
 
 ```bash

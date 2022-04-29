@@ -7,10 +7,13 @@ use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gupalo\BpmnWorkflowBundle\Repository\ProcessRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProcessRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[ORM\UniqueConstraint(name: 'unique_slug', columns: ['slug'])]
+#[UniqueEntity('slug')]
 class Process
 {
     #[ORM\Id]
@@ -19,12 +22,18 @@ class Process
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Field xml can not be empty')]
+    #[Assert\NotNull(message: 'Field xml can not be empty')]
     private string $xml;
 
     #[ORM\Column(type: Types::STRING)]
+    #[Assert\NotBlank(message: 'Field name can not be empty')]
+    #[Assert\NotNull(message: 'Field name can not be empty')]
     private string $name;
 
     #[ORM\Column(type: Types::STRING)]
+    #[Assert\NotBlank(message: 'Field slug can not be empty')]
+    #[Assert\NotNull(message: 'Field slug can not be empty')]
     private string $slug;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

@@ -12,3 +12,13 @@ services:
         resource: '../../Extension/'
         tags:
             - { name: 'bpmnworkflow.extension' }
+
+    Gupalo\BpmnWorkflowBundle\Controller\:
+        resource: '../../Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    # repositories
+    Gupalo\BpmnWorkflowBundle\Repository\ProcessRepository:
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - Gupalo\BpmnWorkflowBundle\Entity\Process

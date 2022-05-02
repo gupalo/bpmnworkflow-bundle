@@ -29,7 +29,7 @@
             <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
         </div>
         {{ block('form_errors') }}
-        <div style="height: 800px;" class="content" id="js-drop-zone"><div style="height: 800px;" class="canvas" id="js-canvas"></div></div>
+        <div style="height: 800px;" class="content" id="js-drop-zone"><div style="height: 550px; border: 1px solid black" class="canvas" id="js-canvas"></div></div>
         <script src="{{ asset('bundles/bpmnworkflow/scripts/app.js') }}"></script>
         </{{ element|default('div') }}>
     {% else %}

@@ -1,17 +1,20 @@
 {% extends '@BpmnWorkflow/base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bpmnworkflow/scripts/bpmn-js/assets/diagram-js.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/bpmnworkflow/scripts/bpmn-js/assets/bpmn-font/css/bpmn-embedded.css') }}" />
+{% endblock %}
 {% block body %}
     <h2>Workflow Process {{ item.id ? 'edit ' ~ item.name : 'create' }}</h2>
     {{ form_start(form) }}
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-10">
             <div class="form-group">
                 {{ form_widget(form.save) }}
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-10">
             <div class="row">
                 <div class="col-md-12">{{ form_row(form.slug) }}</div>
                 <div class="col-md-12">{{ form_row(form.name) }}</div>

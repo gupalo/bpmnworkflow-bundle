@@ -3,6 +3,7 @@
 namespace Gupalo\BpmnWorkflowBundle\Form;
 
 use Gupalo\BpmnWorkflowBundle\Entity\Process;
+use Gupalo\BpmnWorkflowBundle\Form\Type\BpmnType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -21,8 +22,14 @@ class ProcessFormType extends AbstractType
             ->add('slug', TextType::class, [
                 'label' => 'Slug'
             ])
-            ->add('xml', TextareaType::class, [
-                'label' => 'XML'
+            ->add('xml', BpmnType::class, [
+                'hide_element_actions' => [
+                    'create.subprocess-expanded',
+                    'create.data-object',
+                    'create.data-store',
+                    'create.participant-expanded',
+                    'create.group'
+                ]
             ])
             ->add('save', SubmitType::class)
         ;

@@ -1,0 +1,38 @@
+{% use "bootstrap_4_layout.html.twig" %}
+
+{% block form_row -%}
+    {% set block_prefixes = block_prefixes|default([]) %}
+    {% set attr = attr|default([]) %}
+    {% set class = attr.class|default %}
+
+    {% if 'bpmn' in block_prefixes %}
+        {% if hide_element_actions is defined and hide_element_actions|length %}
+            {% for hide in hide_element_actions %}
+                <style type="text/css">.djs-palette-entries [data-action="{{ hide }}"] {display: none}</style>
+            {% endfor %}
+        {% endif %}
+        {%- if compound is defined and compound -%}
+            {%- set element = 'fieldset' -%}
+        {%- endif -%}
+        {%- set widget_attr = {} -%}
+        {%- if help is not empty -%}
+            {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+        {%- endif -%}
+        <{{ element|default('div') }}{% with {attr: row_attr|merge({class: (row_attr.class|default('') ~ ' form-group')|trim})} %}{{ block('attributes') }}{% endwith %}>
+        <div style="float: right">
+            <button id="js-show-xml" class="btn-success btn">Show xml</button>
+            <a id="js-download-diagram" href class="btn-success btn">Download bpmn</a>
+        </div>
+        <div style="clear: both"></div>
+        <br/>
+        <div class="form-group">
+            <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+        </div>
+        {{ block('form_errors') }}
+        <div style="height: 800px;" class="content" id="js-drop-zone"><div style="height: 800px;" class="canvas" id="js-canvas"></div></div>
+        <script src="{{ asset('bundles/bpmnworkflow/scripts/app.js') }}"></script>
+        </{{ element|default('div') }}>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{%- endblock form_row %}

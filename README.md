@@ -26,11 +26,23 @@ bpmnWorkflow:
     resource: '@BpmnWorkflowBundle/Resources/config/routes.yaml'
 ```
 
+Add to config/packages/twig.yaml
+
+```yaml
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes:
+        - bootstrap_4_layout.html.twig
+        - '@BpmnWorkflow/_elements/bpmn_form_style.html.twig'
+```
+
+
 ## Execute
 
 ```bash
 php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
+php bin/console assets:install
 ```
 
 Test
@@ -38,3 +50,5 @@ Test
 ```bash
 php bin/phpunit vendor/gupalo/bpmnworkflow-bundle
 ```
+
+

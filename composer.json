@@ -28,7 +28,8 @@
     "require-dev": {
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.5",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "nelmio/alice": "^3.10"
     },
     "config": {
         "preferred-install": {

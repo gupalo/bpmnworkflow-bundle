@@ -2,19 +2,45 @@
 
 namespace Gupalo\BpmmWorkflowBundle\Tests\Extension;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Gupalo\BpmmWorkflowBundle\Tests\Example\Cart\Cart;
 use Gupalo\BpmnWorkflow\Bpmn\Loader\BpmnDirLoader;
 use Gupalo\BpmnWorkflow\Context\ContextInterface;
 use Gupalo\BpmnWorkflow\Context\DataContext;
 use Gupalo\BpmnWorkflowBundle\Process\Workflow;
-use Gupalo\BpmnWorkflowBundle\Repository\ProcessRepository;
+use Gupalo\BpmnWorkflowBundle\ProcessLoader\DbProcessLoader;
+use Nelmio\Alice\Loader\NativeLoader;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class WorkflowTest extends KernelTestCase
+class WorkflowTest extends WebTestCase
 {
+    private EntityManagerInterface $em;
+
     protected function setUp(): void
     {
         self::bootKernel();
+        $this->em = self::$kernel->getContainer()->get('doctrine')->getManager();
+        $this->loadData();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->em->createQuery(
+            'DELETE FROM Gupalo\BpmnWorkflowBundle\Entity\Process p WHERE 1 = 1'
+        )->execute();
+        parent::tearDown();
+    }
+
+    private function loadData(): void
+    {
+        $loader = new NativeLoader();
+        $data = $loader->loadFile(__DIR__. '/../fixtures/process.yaml');
+        foreach ($data->getObjects() as $object) {
+            $this->em->persist($object);
+        }
+        $this->em->flush();
+        $this->em->clear();
     }
 
     /**
@@ -25,22 +51,13 @@ class WorkflowTest extends KernelTestCase
         /** @var Workflow $workflow */
         $workflow = self::getContainer()->get(Workflow::class);
 
-        $workflow->executeProcess((new BpmnDirLoader(__DIR__ . '/../BpmnDiagrams')), $context, 'cart_discount');
+        $workflow->executeProcess(self::$kernel->getContainer()->get(DbProcessLoader::class), $context, 'cart_discount');
 
         self::assertEquals($result, $context->getData()->getPrice());
     }
 
     public function contexts(): iterable
     {
-        yield 'cart small price' => [
-            new DataContext(new Cart(
-                items: ['name' => 'cola', 'price' => 800],
-                locale: 'en',
-                price: 800,
-            )),
-            360
-        ];
-
         yield 'cart big price' => [
             new DataContext(new Cart(
                 items: ['name' => 'cola', 'price' => 5000],

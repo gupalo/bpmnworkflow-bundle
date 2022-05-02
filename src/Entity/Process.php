@@ -7,6 +7,7 @@ use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gupalo\BpmnWorkflowBundle\Repository\ProcessRepository;
+use Gupalo\BpmnWorkflowBundle\Validator\BpmnConstraint as AssertBpmn;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -24,6 +25,7 @@ class Process
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(message: 'Field xml can not be empty')]
     #[Assert\NotNull(message: 'Field xml can not be empty')]
+    #[AssertBpmn()]
     private string $xml;
 
     #[ORM\Column(type: Types::STRING)]

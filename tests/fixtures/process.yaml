@@ -21,7 +21,7 @@ Gupalo\BpmnWorkflowBundle\Entity\Process:
                   <bpmn2:outgoing>Flow_1exmzme</bpmn2:outgoing>
                 </bpmn2:task>
                 <bpmn2:sequenceFlow id="Flow_1gb8qgb" name="&#60; 1000" sourceRef="Gateway_1rhxq6q" targetRef="Activity_09far9q" />
-                <bpmn2:task id="Activity_0ys0n5j" name="without_discount">
+                <bpmn2:task id="Activity_0ys0n5j" name="withoutDiscount">
                   <bpmn2:incoming>Flow_1meg0gy</bpmn2:incoming>
                   <bpmn2:outgoing>Flow_1hx94pu</bpmn2:outgoing>
                 </bpmn2:task>

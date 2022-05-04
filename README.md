@@ -48,7 +48,7 @@ php bin/console assets:install
 Test
 
 ```bash
-php bin/phpunit vendor/gupalo/bpmnworkflow-bundle
+php vendor/bin/phpunit vendor/gupalo/bpmnworkflow-bundle
 ```
 
 

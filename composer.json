@@ -25,13 +25,14 @@
         "symfony/expression-language": "^6.0",
         "symfony/orm-pack": "^2.2",
         "symfony/asset": "^6.0",
-        "symfony/validator": "^6.0"
+        "symfony/validator": "^6.0",
+        "phpunit/phpunit": "^9.5",
+        "nelmio/alice": "^3.10",
+        "symfony/phpunit-bridge": "^6.0"
     },
     "require-dev": {
         "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^9.5",
-        "roave/security-advisories": "dev-latest",
-        "nelmio/alice": "^3.10"
+        "roave/security-advisories": "dev-latest"
     },
     "config": {
         "preferred-install": {

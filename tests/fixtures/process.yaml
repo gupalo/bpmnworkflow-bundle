@@ -42,7 +42,7 @@ Gupalo\BpmnWorkflowBundle\Entity\Process:
                   <bpmn2:incoming>Flow_0sqqnp4</bpmn2:incoming>
                   <bpmn2:outgoing>Flow_075ss1x</bpmn2:outgoing>
                 </bpmn2:task>
-                <bpmn2:sequenceFlow id="Flow_0sqqnp4" name="=en" sourceRef="Gateway_078fr2i" targetRef="Activity_04lloz0" />
+                <bpmn2:sequenceFlow id="Flow_0sqqnp4" name="==en" sourceRef="Gateway_078fr2i" targetRef="Activity_04lloz0" />
                 <bpmn2:task id="Activity_12r8pqo" name="discount(10)">
                   <bpmn2:incoming>Flow_1bh0ljj</bpmn2:incoming>
                   <bpmn2:outgoing>Flow_0e32s8b</bpmn2:outgoing>

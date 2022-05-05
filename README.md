@@ -45,10 +45,30 @@ php bin/console doctrine:migrations:migrate
 php bin/console assets:install
 ```
 
-Test
+## Test
+
+For test in main app need install require-dev dependency
 
 ```bash
-php vendor/bin/phpunit vendor/gupalo/bpmnworkflow-bundle
+composer require symfony/phpunit-bridge --dev
+composer require phpunit/phpunit --dev
+composer require nelmio/alice --dev
 ```
 
+Add to composer.json autoload-dev section
 
+```json
+"autoload-dev": {
+    "psr-4": {
+        "App\\Tests\\": "tests/",
+        "Gupalo\\BpmmWorkflowBundle\\Tests\\": "vendor/gupalo/bpmnworkflow-bundle/tests/"
+    }
+}
+```
+
+Execute
+
+```bash
+composer dump-autoload
+php vendor/bin/phpunit vendor/gupalo/bpmnworkflow-bundle
+```

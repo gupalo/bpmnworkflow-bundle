@@ -7,8 +7,12 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Gupalo\\BpmmWorkflowBundle\\Tests\\": "tests/",
             "Gupalo\\BpmnWorkflowBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "prs-4": {
+            "Gupalo\\BpmmWorkflowBundle\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -26,14 +30,14 @@
         "symfony/orm-pack": "^2.2",
         "symfony/asset": "^6.0",
         "symfony/validator": "^6.0",
-        "phpunit/phpunit": "^9.5",
-        "nelmio/alice": "^3.10",
-        "symfony/phpunit-bridge": "^6.0",
         "sensio/framework-extra-bundle": "^6.2"
     },
     "require-dev": {
         "phpspec/prophecy-phpunit": "^2.0",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "nelmio/alice": "^3.10",
+        "symfony/phpunit-bridge": "^6.0",
+        "phpunit/phpunit": "^9.5"
     },
     "config": {
         "preferred-install": {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Gupalo\BpmmWorkflowBundle\Tests\Extension;
+namespace Gupalo\BpmnWorkflowBundle\Tests\Extension;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Gupalo\BpmmWorkflowBundle\Tests\Example\Cart\Cart;
+use Gupalo\BpmnWorkflowBundle\Tests\Example\Cart\Cart;
 use Gupalo\BpmnWorkflow\Bpmn\Loader\BpmnDirLoader;
 use Gupalo\BpmnWorkflow\Context\ContextInterface;
 use Gupalo\BpmnWorkflow\Context\DataContext;

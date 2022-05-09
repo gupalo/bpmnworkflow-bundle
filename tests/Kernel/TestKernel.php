@@ -1,6 +1,6 @@
 <?php
 
-namespace Gupalo\BpmmWorkflowBundle\Tests\Kernel;
+namespace Gupalo\BpmnWorkflowBundle\Tests\Kernel;
 
 use Gupalo\BpmnWorkflowBundle\BpmnWorkflowBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;

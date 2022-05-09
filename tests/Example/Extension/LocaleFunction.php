@@ -1,6 +1,6 @@
 <?php
 
-namespace Gupalo\BpmmWorkflowBundle\Tests\Example\Extension;
+namespace Gupalo\BpmnWorkflowBundle\Tests\Example\Extension;
 
 use Gupalo\BpmnWorkflow\Context\ContextInterface;
 use Gupalo\BpmnWorkflow\Extension\FunctionInterface;
@@ -12,7 +12,7 @@ class LocaleFunction implements FunctionInterface
     {
         /** @var Cart $cart */
         $cart = $context->getData();
-        
+
         return $cart->getLocale();
     }
 }

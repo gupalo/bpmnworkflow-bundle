@@ -12,7 +12,7 @@
     },
     "autoload-dev": {
         "prs-4": {
-            "Gupalo\\BpmmWorkflowBundle\\Tests\\": "tests/"
+            "Gupalo\\BpmnWorkflowBundle\\Tests\\": "tests/"
         }
     },
     "require": {

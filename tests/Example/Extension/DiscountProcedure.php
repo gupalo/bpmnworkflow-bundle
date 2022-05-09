@@ -1,6 +1,6 @@
 <?php
 
-namespace Gupalo\BpmmWorkflowBundle\Tests\Example\Extension;
+namespace Gupalo\BpmnWorkflowBundle\Tests\Example\Extension;
 
 use Gupalo\BpmnWorkflow\Context\ContextInterface;
 use Gupalo\BpmnWorkflow\Extension\ProcedureInterface;
@@ -12,7 +12,7 @@ class DiscountProcedure implements ProcedureInterface
     {
         /** @var Cart $cart */
         $cart = $context->getData();
-        
+
         $cart->setPrice($cart->getPrice()*((100-$params[0])/100));
     }
 }

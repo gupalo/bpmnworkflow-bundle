@@ -1,6 +1,6 @@
 <?php
 
-namespace Gupalo\BpmmWorkflowBundle\Tests\Example\Cart;
+namespace Gupalo\BpmnWorkflowBundle\Tests\Example\Cart;
 
 class Cart
 {
@@ -10,17 +10,17 @@ class Cart
         private float $price
     ) {
     }
-    
+
     public function getItems(): array
     {
         return $this->items;
     }
-    
+
     public function getLocale(): string
     {
         return $this->locale;
     }
-    
+
     public function getPrice(): float
     {
         return $this->price;

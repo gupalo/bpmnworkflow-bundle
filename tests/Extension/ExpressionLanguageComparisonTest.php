@@ -1,6 +1,6 @@
 <?php
 
-namespace Gupalo\BpmmWorkflowBundle\Tests\Extension;
+namespace Gupalo\BpmnWorkflowBundle\Tests\Extension;
 
 use Gupalo\BpmnWorkflowBundle\Extension\ExpressionLanguageComparison;
 use PHPUnit\Framework\TestCase;
@@ -43,17 +43,17 @@ class ExpressionLanguageComparisonTest extends TestCase
         yield '= int true' => [' == 10', 10, true];
 
         yield '= bool true' => [' == true', true, true];
-        
+
         yield '!= bool true' => [' != true', true, false];
 
         yield '!= false' => [' != 10', '10', false];
 
         yield '>= true' => [' >=10', '20', true];
-        
+
         yield '> true' => [' >10', '20', true];
 
         yield '<= false' => [' >=10', '5', false];
-        
+
         yield '< false' => [' >10', '5', false];
     }
 }

@@ -18,13 +18,13 @@
     {% for key, trace in traces %}
         <tr>
             <td class="text-nowrap">{{ trace.date|date('Y-m-d H:i:s') }}</td>
-            <td class="text-nowrap">{{ trace.dataBefore|json_encode() }}</td>
+            <td class="">{{ trace.dataBefore|json_encode(constant('JSON_PRETTY_PRINT')) }}</td>
             <td class="text-nowrap">
                 {% for process, uids in trace.trace %}
                     <a href="{{ path('bpmn_trace_history_one', {'trace': key, 'process': process}) }}"> - {{ process }}</a> <br/>
                 {% endfor %}
             </td>
-            <td class="text-nowrap">{{ trace.dataAfter|json_encode() }}</td>
+            <td class="">{{ trace.dataAfter|json_encode(constant('JSON_PRETTY_PRINT')) }}</td>
         </tr>
     {% endfor %}
     </tbody>

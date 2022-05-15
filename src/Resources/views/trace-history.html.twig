@@ -1,0 +1,32 @@
+{% extends '@BpmnWorkflow/base.html.twig' %}
+
+{% block body %}
+<h2>Trace history</h2>
+<div class="clearfix"></div>
+
+<table class="table table-striped table-hover table-responsive-md table-sm dataTable"
+       style="min-width: 20%">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Context before</th>
+        <th scope="col">Processes executed</th>
+        <th scope="col">Context after</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key, trace in traces %}
+        <tr>
+            <td class="text-nowrap">{{ trace.date|date('Y-m-d H:i:s') }}</td>
+            <td class="text-nowrap">{{ trace.dataBefore|json_encode() }}</td>
+            <td class="text-nowrap">
+                {% for process, uids in trace.trace %}
+                    <a href="{{ path('bpmn_trace_history_one', {'trace': key, 'process': process}) }}"> - {{ process }}</a> <br/>
+                {% endfor %}
+            </td>
+            <td class="text-nowrap">{{ trace.dataAfter|json_encode() }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

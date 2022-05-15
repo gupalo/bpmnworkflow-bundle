@@ -17,6 +17,26 @@ class ProcessRepository extends EntityRepository
         return $this->findBy(['slug' => $slugs]);
     }
 
+    public function findProcess(string $process): ?Process
+    {
+        $process = $this->findOneBy(['slug' => $process]);
+        if ($process) {
+            return $process;
+        }
+
+        $processes = $this->createQueryBuilder('p')
+            ->where('p.xml LIKE :processLike')
+            ->setParameter('processLike', '%' . $process . '%')
+            ->getQuery()
+            ->getResult();
+
+        if (count($processes)) {
+            return $processes[0];
+        }
+
+        return null;
+    }
+
     public function create(Process $process): void
     {
         $this->getEntityManager()->persist($process);

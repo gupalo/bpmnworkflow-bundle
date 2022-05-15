@@ -1,0 +1,21 @@
+{% extends '@BpmnWorkflow/base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bpmnworkflow/scripts/bpmn-js/assets/diagram-js.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/bpmnworkflow/scripts/bpmn-js/assets/bpmn-font/css/bpmn-embedded.css') }}" />
+    {% for uid in uids %}
+        <style type="text/css">svg g[data-element-id="{{ uid }}"] g.djs-visual circle {fill: red !important;}</style>
+        <style type="text/css">svg g[data-element-id="{{ uid }}"] g.djs-visual polygon {fill: red !important;}</style>
+        <style type="text/css">svg g[data-element-id="{{ uid }}"] g.djs-visual rect {fill: red !important;}</style>
+    {% endfor %}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/bpmnworkflow/scripts/app.js') }}"></script>
+{% endblock %}
+{% block body %}
+<h2>Process</h2>
+<div class="clearfix"></div>
+
+    <textarea style="display: none" class="bpmn">{{ xml }}</textarea>
+    <div style="height: 800px;" class="content" id="js-drop-zone"><div style="height: 550px; border: 1px solid black" class="canvas" id="js-canvas"></div></div>
+{% endblock %}

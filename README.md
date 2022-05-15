@@ -36,6 +36,14 @@ twig:
         - '@BpmnWorkflow/_elements/bpmn_form_style.html.twig'
 ```
 
+Save Trace as file. Add to services.yaml
+
+```yaml
+Gupalo\BpmnWorkflow\Trace\TraceFileStorage:
+    bind:
+        $dirPath: '%kernel.project_dir%/var/traces'
+```
+
 
 ## Execute
 
